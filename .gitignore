@@ -1,0 +1,8 @@
+*.pyc
+__pycache__
+*.egg-info
+dist
+*.tox
+*.sw[a-z]
+build
+.python-version
