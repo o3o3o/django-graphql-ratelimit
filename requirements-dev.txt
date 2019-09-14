@@ -1,0 +1,5 @@
+-r requirements.txt
+tox
+flake8
+django-nose
+twine

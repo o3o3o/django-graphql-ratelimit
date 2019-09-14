@@ -1,1 +1,1 @@
-from .ratelimit import GQLRatelimitKey, ratelimit
+from .ratelimit import GQLRatelimitKey, ratelimit  # noqa
