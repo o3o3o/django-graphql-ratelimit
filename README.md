@@ -26,7 +26,7 @@ class RequestSMSCode(graphene.Mutation):
         def mutate(self, info, phone):
             request = info.context
             # send sms code logic
-            return Test(ok=True)
+            return RequestSMSCode(ok=True)
 ```
 You can use [django-ratelimit keys](https://django-ratelimit.readthedocs.io/en/latest/keys.html#common-keys) except `get:xxx` and `post:xxx`:
 * `ip`  - Use the request IP address (i.e. `request.META['REMOTE_ADDR']`)
