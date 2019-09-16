@@ -4,7 +4,7 @@ install_requires = open("requirements.txt").read().splitlines()
 
 setup(
     name="django-graphql-ratelimit",
-    version="1.0.0",
+    version="1.0.1",
     description="Use django-ratelimit for graphql",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
