@@ -1,10 +1,15 @@
 import logging
-from ratelimit import ALL
+from django.conf import settings
+from django.utils.module_loading import import_string
 from functools import wraps
-from ratelimit.exceptions import Ratelimited
-from ratelimit.utils import is_ratelimited
+from django_ratelimit import ALL, UNSAFE
+from django_ratelimit.exceptions import Ratelimited
+from django_ratelimit.core import is_ratelimited
+
 
 logger = logging.getLogger(__name__)
+
+__all__ = ["ratelimit"]
 
 
 def GQLRatelimitKey(group, request):
@@ -47,9 +52,16 @@ def ratelimit(group=None, key=None, rate=None, method=ALL, block=False):
                 #    "url:<%s> is denied for <%s> in Ratelimit"
                 #    % (request.path, request.META["REMOTE_ADDR"])
                 # )
-                raise Ratelimited("rate_limited")
+                cls = getattr(settings, "RATELIMIT_EXCEPTION_CLASS", Ratelimited)
+                raise (import_string(cls) if isinstance(cls, str) else cls)(
+                    "rate_limited"
+                )
             return fn(root, info, **kw)
 
         return _wrapped
 
     return decorator
+
+
+ratelimit.ALL = ALL
+ratelimit.UNSAFE = UNSAFE

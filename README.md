@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/o3o3o/django-graphql-ratelimit.svg?style=svg)](https://circleci.com/gh/o3o3o/django-graphql-ratelimit) ![PyPI](https://img.shields.io/pypi/v/django-graphql-ratelimit)
+[![CircleCI](https://circleci.com/gh/o3o3o/django-graphql-ratelimit.svg?style=svg)](https://circleci.com/gh/o3o3o/django-graphql-ratelimit) [![PyPI version](https://badge.fury.io/py/django-graphql-ratelimit.svg)](https://badge.fury.io/py/django-graphql-ratelimit)
 
 Eaiser to use [django-ratelimit](https://github.com/jsocol/django-ratelimit) for graphql in django.
 

@@ -1,5 +1,5 @@
 graphene
 graphene-django
-django-ratelimit
+django-ratelimit>=4.0.0
 # Get request ip addres
 django-ipware

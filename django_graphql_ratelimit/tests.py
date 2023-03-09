@@ -37,7 +37,7 @@ class Query(graphene.ObjectType):
 
     @ratelimit(key="user_or_ip", rate="1/m", block=True)
     def resolve_pictures(root, info):
-        return [Picture(url="https://o3o3o.me")]
+        return [Picture(url="https://example.com")]
 
 
 class Mutation(graphene.ObjectType):
@@ -67,7 +67,7 @@ class GqlRatelimitTestCase(TestCase):
 
         # ratelimited by phone
         resp = self.client.schema.execute(query, context_value=self.context)
-        self.assertEqual(str(resp.errors[0]), "rate_limited", msg=resp.errors)
+        self.assertIn("rate_limited", str(resp.errors[0]), msg=resp.errors)
 
         query = """
         query {
@@ -81,4 +81,4 @@ class GqlRatelimitTestCase(TestCase):
 
         resp = self.client.schema.execute(query, context_value=self.context)
         # ratelimit by user_or_ip
-        self.assertEqual(str(resp.errors[0]), "rate_limited", msg=resp.errors)
+        self.assertIn("rate_limited", str(resp.errors[0]), msg=resp.errors)
